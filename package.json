@@ -1,0 +1,25 @@
+{
+    "name": "@dwp/eslint-config-base",
+    "version": "1.0.0",
+    "author": "Adam Moss",
+    "license": "ISC",
+    "description": "base configuration for eslint",
+    "keywords": [
+        "config",
+        "shareable-config",
+        "eslint",
+        "lint"
+    ],
+    "homepage": "https://github.com/dwp/eslint-config-base",
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com:dwp/eslint-config-base.git"
+    },
+    "bugs": {
+        "url": "https://github.com/dwp/eslint-config-base/issues"
+    },
+    "main": "",
+    "scripts": {},
+    "dependencies": {},
+    "devDependencies": {}
+}
