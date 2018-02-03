@@ -1,4 +1,5 @@
 # @dwp/eslint-config-base
+[![Known Vulnerabilities](https://snyk.io/test/github/dwp/eslint-config-base/badge.svg)](https://snyk.io/test/github/dwp/eslint-config-base)
 
 Shareable [`eslint`](http://eslint.org) config enforcing our lint and style convention.
 
