@@ -112,6 +112,23 @@ nsp:
     script:
         - npm run security:nsp
 
+blackduck:
+    stage: security-tests
+    <<: *executor-shell
+    <<: *dependency-npm
+    script:
+        - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
+    <<: *not-branches
+
+blackduck-branch:
+    stage: security-tests
+    <<: *executor-shell
+    <<: *dependency-npm
+    script:
+        - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
+    <<: *only-branches
+    when: manual
+
 unit:
     stage: unit-tests
     <<: *executor-shell
