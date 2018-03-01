@@ -52,7 +52,7 @@
         "@dwp/nyc-config-base": "1.0.0",
         "eslint": "4.18.1",
         "husky": "0.14.3",
-        "jasmine": "2.8.0",
+        "jasmine": "3.1.0",
         "jasmine-spec-reporter": "4.2.1",
         "lint-staged": "6.0.0",
         "nsp": "3.1.0",
