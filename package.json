@@ -50,7 +50,7 @@
         "@dwp/commitlint-config-base": "1.0.0",
         "@dwp/eslint-config-jasmine": "1.0.0",
         "@dwp/nyc-config-base": "1.0.0",
-        "eslint": "4.15.0",
+        "eslint": "4.18.1",
         "husky": "0.14.3",
         "jasmine": "2.8.0",
         "jasmine-spec-reporter": "4.2.1",
