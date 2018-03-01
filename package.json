@@ -46,7 +46,7 @@
         "eslint-plugin-import": "2.8.0"
     },
     "devDependencies": {
-        "@commitlint/cli": "6.0.2",
+        "@commitlint/cli": "6.1.2",
         "@dwp/commitlint-config-base": "1.0.0",
         "@dwp/eslint-config-jasmine": "1.0.0",
         "@dwp/nyc-config-base": "1.0.0",
