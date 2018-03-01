@@ -55,7 +55,7 @@
         "jasmine": "3.1.0",
         "jasmine-spec-reporter": "4.2.1",
         "lint-staged": "7.0.0",
-        "nsp": "3.1.0",
+        "nsp": "3.2.1",
         "nyc": "11.4.1",
         "snyk": "1.68.0",
         "sonarjs": "1.0.0"
