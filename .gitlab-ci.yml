@@ -129,6 +129,21 @@ blackduck-branch:
     <<: *only-branches
     when: manual
 
+checkmarx:
+    stage: security-tests
+    <<: *executor-shell
+    script:
+        - checkmarx ${CI_PROJECT_NAME}@${CI_PROJECT_NAMESPACE}#${CI_COMMIT_REF_NAME} Engineering
+    <<: *not-branches
+
+checkmarx-branch:
+    stage: security-tests
+    <<: *executor-shell
+    script:
+        - checkmarx ${CI_PROJECT_NAME}@${CI_PROJECT_NAMESPACE}#${CI_COMMIT_REF_NAME} Engineering
+    <<: *only-branches
+    when: manual
+
 unit:
     stage: unit-tests
     <<: *executor-shell
