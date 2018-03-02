@@ -1,0 +1,12 @@
+{
+    "assignees": [
+        "adam-moss"
+    ],
+    "devDependencies": {
+        "automerge": true
+    },
+    "prHourlyLimit": 0,
+    "reviewers": [
+        "adam-moss"
+    ]
+}
