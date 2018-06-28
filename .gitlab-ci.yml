@@ -39,7 +39,7 @@ npm:
     <<: *executor-docker
     <<: *node-image
     script:
-        - HASH=( $( md5sum package.json ) )
+        - HASH="$( md5sum package.json )"
         - CACHE=/tmp/${CI_PROJECT_NAME}_${HASH}.tgz
         - if [ -f $CACHE ]; then
               tar -xzf $CACHE;
