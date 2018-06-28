@@ -165,6 +165,7 @@ sonarjs:
     <<: *node-image
     <<: *dependency-npm
     script:
+        - apk update && apk upgrade && apk add openjdk8-jre
         - npm run quality:sonarjs
 
 sonar-scanner:
