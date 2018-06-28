@@ -1,12 +1,9 @@
 .executor-docker: &executor-docker
     tags:
         - docker
-    image: node:9.11.1
-    before_script:
-        - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-        - export NVM_DIR="$HOME/.nvm"
-        - '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
-        - nvm use
+
+.node-image: &node-image
+    image: node:9.11.1-alpine
 
 .dependency-npm: &dependency-npm
     dependencies:
@@ -40,6 +37,7 @@ stages:
 npm:
     stage: build
     <<: *executor-docker
+    <<: *node-image
     script:
         - HASH=( $( md5sum package.json ) )
         - CACHE=/tmp/${CI_PROJECT_NAME}_${HASH}.tgz
@@ -59,6 +57,7 @@ npm:
 commitlint-branch:
     stage: compliance-tests
     <<: *executor-docker
+    <<: *node-image
     <<: *dependency-npm
     script:
         - git fetch origin develop --quiet
@@ -71,6 +70,7 @@ commitlint-branch:
 commitlint-develop:
     stage: compliance-tests
     <<: *executor-docker
+    <<: *node-image
     <<: *dependency-npm
     script:
         - git fetch origin master --quiet
@@ -83,6 +83,7 @@ commitlint-develop:
 eslint:
     stage: compliance-tests
     <<: *executor-docker
+    <<: *node-image
     <<: *dependency-npm
     script:
         - npm run compliance:eslint
@@ -90,6 +91,7 @@ eslint:
 outdated:
     stage: security-tests
     <<: *executor-docker
+    <<: *node-image
     <<: *dependency-npm
     script:
         - npm outdated
@@ -98,12 +100,14 @@ outdated:
 nsp:
     stage: security-tests
     <<: *executor-docker
+    <<: *node-image
     script:
         - npm run security:nsp
 
 blackduck:
     stage: security-tests
     <<: *executor-docker
+    <<: *node-image
     <<: *dependency-npm
     script:
         - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
@@ -112,6 +116,7 @@ blackduck:
 blackduck-branch:
     stage: security-tests
     <<: *executor-docker
+    <<: *node-image
     <<: *dependency-npm
     script:
         - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
@@ -121,6 +126,7 @@ blackduck-branch:
 checkmarx:
     stage: security-tests
     <<: *executor-docker
+    <<: *node-image
     script:
         - checkmarx ${CI_PROJECT_NAME}@${CI_PROJECT_NAMESPACE}#${CI_COMMIT_REF_NAME} Engineering
     <<: *not-branches
@@ -128,6 +134,7 @@ checkmarx:
 checkmarx-branch:
     stage: security-tests
     <<: *executor-docker
+    <<: *node-image
     script:
         - checkmarx ${CI_PROJECT_NAME}@${CI_PROJECT_NAMESPACE}#${CI_COMMIT_REF_NAME} Engineering
     <<: *only-branches
@@ -136,6 +143,7 @@ checkmarx-branch:
 unit:
     stage: unit-tests
     <<: *executor-docker
+    <<: *node-image
     <<: *dependency-npm
     script:
         - npm run unit:test
@@ -148,6 +156,7 @@ unit:
 sonarjs:
     stage: quality-tests
     <<: *executor-docker
+    <<: *node-image
     <<: *dependency-npm
     script:
         - npm run quality:sonarjs
@@ -155,6 +164,7 @@ sonarjs:
 sonar-scanner:
     stage: quality-tests
     <<: *executor-docker
+    <<: *node-image
     <<: *dependency-unit
     script:
         - sed -i.bak -e "s|^SF:\(.*/[[:digit:]]\{1,\}/.*/\)|SF:$( pwd )/|g" .coverage/unit/lcov.info
