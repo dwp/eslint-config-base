@@ -41,12 +41,12 @@ npm:
     script:
         - HASH="$( md5sum package.json )"
         - CACHE=/tmp/${CI_PROJECT_NAME}_${HASH}.tgz
-        - if [ -f $CACHE ]; then
-              tar -xzf $CACHE;
+        - if [ -f "$CACHE" ]; then
+              tar -xzf "$CACHE";
           else
               rm -f /tmp/${CI_PROJECT_NAME}_*.tgz &&
               npm install &&
-              tar -czf $CACHE node_modules;
+              tar -czf "$CACHE" node_modules;
           fi
     artifacts:
         name: "${CI_PROJECT_NAME}_${CI_JOB_ID}_${CI_COMMIT_SHA}"
