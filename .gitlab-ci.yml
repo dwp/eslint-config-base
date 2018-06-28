@@ -31,18 +31,11 @@
         - tags
 
 stages:
-    - setup
     - build
     - compliance-tests
     - security-tests
     - unit-tests
     - quality-tests
-
-nvm:
-    stage: setup
-    <<: *executor-docker
-    script:
-        - nvm install
 
 npm:
     stage: build
