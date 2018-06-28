@@ -113,7 +113,6 @@ nsp:
 blackduck:
     stage: security-tests
     <<: *executor-docker
-    <<: *node-image
     <<: *dependency-npm
     script:
         - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
@@ -122,7 +121,6 @@ blackduck:
 blackduck-branch:
     stage: security-tests
     <<: *executor-docker
-    <<: *node-image
     <<: *dependency-npm
     script:
         - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
@@ -132,7 +130,7 @@ blackduck-branch:
 checkmarx:
     stage: security-tests
     <<: *executor-docker
-    <<: *node-image
+    image: $CI_REGISTRY/provisioning/checkmarx-cli:latest
     script:
         - checkmarx ${CI_PROJECT_NAME}@${CI_PROJECT_NAMESPACE}#${CI_COMMIT_REF_NAME} Engineering
     <<: *not-branches
@@ -140,7 +138,7 @@ checkmarx:
 checkmarx-branch:
     stage: security-tests
     <<: *executor-docker
-    <<: *node-image
+    image: $CI_REGISTRY/provisioning/checkmarx-cli:latest
     script:
         - checkmarx ${CI_PROJECT_NAME}@${CI_PROJECT_NAMESPACE}#${CI_COMMIT_REF_NAME} Engineering
     <<: *only-branches
