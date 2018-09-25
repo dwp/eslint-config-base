@@ -43,7 +43,7 @@
     },
     "dependencies": {
         "eslint-config-airbnb-base": "13.1.0",
-        "eslint-plugin-import": "2.13.0"
+        "eslint-plugin-import": "2.14.0"
     },
     "devDependencies": {
         "@commitlint/cli": "7.1.2",
@@ -51,13 +51,13 @@
         "@dwp/eslint-config-jasmine": "1.0.0",
         "@dwp/nyc-config-base": "1.0.0",
         "eslint": "5.6.0",
-        "husky": "0.14.3",
+        "husky": "1.0.1",
         "jasmine": "3.2.0",
         "jasmine-spec-reporter": "4.2.1",
         "lint-staged": "7.3.0",
         "nsp": "3.2.1",
         "nyc": "13.0.1",
-        "snyk": "1.97.1",
+        "snyk": "1.99.0",
         "sonarjs": "1.0.0"
     }
 }
