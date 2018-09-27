@@ -1,3 +1,6 @@
 {
-  "extends": "@dwp/nyc-config-base"
+  "extends": "@dwp/nyc-config-base",
+  "exclude": [
+    "*.config.js"
+  ]
 }
