@@ -69,7 +69,7 @@ commitlint-branch:
         - git checkout develop --quiet
         - git reset --hard origin/develop --quiet
         - git checkout - --quiet
-        - npm run compliance:commitlint
+        - npm run compliance:commits
     <<: *only-branches
 
 commitlint-develop:
@@ -92,7 +92,7 @@ eslint:
     <<: *node-image
     <<: *dependency-npm
     script:
-        - npm run compliance:eslint
+        - npm run compliance:lint
 
 outdated:
     stage: security-tests
@@ -150,7 +150,7 @@ unit:
     <<: *node-image
     <<: *dependency-npm
     script:
-        - npm run unit:test
+        - npm run tests:unit
     artifacts:
         expire_in: 10 mins
         paths:
@@ -164,7 +164,7 @@ sonarjs:
     <<: *dependency-npm
     script:
         - apk update && apk upgrade && apk add openjdk8-jre
-        - npm run quality:sonarjs
+        - npm run quality:sonar
 
 sonar-scanner:
     stage: quality-tests
