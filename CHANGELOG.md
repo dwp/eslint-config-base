@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [Unreleased]
 ### Changed
 - New version of our eslint ruleset
+- Amend npm script names and groups
+- Swap out NSP for `npm audit`
 
 ## [1.0.0] - 2018-01-15
 ### Added
