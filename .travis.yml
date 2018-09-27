@@ -10,7 +10,7 @@ matrix:
     fast_finish: true
     allow_failures:
           - script:
-              - npm outdated
+              - npm run security:outdated
 
 jobs:
     include:
@@ -20,20 +20,20 @@ jobs:
 
         - stage: compliance-tests
           script:
-              - npm run compliance:eslint
+              - npm run compliance:lint
 
         - stage: security-tests
           script:
-              - npm outdated
+              - npm run security:outdated
 
         - stage: security-tests
           script:
-              - npm run security:nsp
+              - npm run security:audit
 
         - stage: unit-tests
           script:
-              - npm run unit:test
+              - npm run tests:unit
 
         - stage: quality-tests
           script:
-              - npm run quality:sonarjs
+              - npm run quality:sonar
