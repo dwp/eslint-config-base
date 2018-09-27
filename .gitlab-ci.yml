@@ -108,7 +108,7 @@ nsp:
     <<: *executor-docker
     <<: *node-image
     script:
-        - npm run security:nsp
+        - npm run security:audit
 
 blackduck:
     stage: security-tests
