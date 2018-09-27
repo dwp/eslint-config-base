@@ -49,13 +49,13 @@
     "@dwp/commitlint-config-base": "1.0.0",
     "@dwp/eslint-config-jasmine": "1.0.0",
     "@dwp/nyc-config-base": "1.0.0",
-    "eslint": "5.6.0",
+    "eslint": "5.6.1",
     "husky": "1.0.1",
     "jasmine": "3.2.0",
     "jasmine-spec-reporter": "4.2.1",
     "lint-staged": "7.3.0",
     "nyc": "13.0.1",
-    "snyk": "1.99.0",
+    "snyk": "1.99.1",
     "sonarjs": "1.0.0"
   }
 }
