@@ -1,59 +1,64 @@
+const { expect } = require('chai');
+
 const eslintConfig = require('../../src/index');
 
 describe('@dwp/eslint-config-base', () => {
   it('the entrypoint should export an object', () => {
-    expect(eslintConfig).toEqual(jasmine.any(Object));
+    expect(eslintConfig).to.be.an('Object');
   });
 
   describe('the exported object', () => {
+    const eslintConfigKeys = Object.keys(eslintConfig);
+
     it('should have a parserOptions key', () => {
-      expect(Object.keys(eslintConfig)).toContain('parserOptions');
+      expect(eslintConfigKeys).to.contain('parserOptions');
     });
 
     it('should have a root key', () => {
-      expect(Object.keys(eslintConfig)).toContain('parserOptions');
+      expect(eslintConfigKeys).to.contain('parserOptions');
     });
 
     it('should have an extends key', () => {
-      expect(Object.keys(eslintConfig)).toContain('extends');
+      expect(eslintConfigKeys).to.contain('extends');
     });
 
     it('should have an env key', () => {
-      expect(Object.keys(eslintConfig)).toContain('env');
+      expect(eslintConfigKeys).to.contain('env');
     });
 
     it('should have a rules key', () => {
-      expect(Object.keys(eslintConfig)).toContain('rules');
+      expect(eslintConfigKeys).to.contain('rules');
     });
 
     it('not have any other keys', () => {
-      expect(Object.keys(eslintConfig)).toEqual(['parserOptions', 'root', 'extends', 'env', 'rules']);
+      expect(eslintConfigKeys).to.deep.equal(['parserOptions', 'root', 'extends', 'env', 'rules']);
     });
 
     describe('the parserOptions key should', () => {
-      const rules = eslintConfig.parserOptions;
+      const { parserOptions: rules } = eslintConfig;
+      const rulesKeys = Object.keys(rules);
 
       it('be an object', () => {
-        expect(rules).toEqual(jasmine.any(Object));
+        expect(rules).to.be.an('Object');
       });
 
       it('have an ecmaVersion key', () => {
-        expect(Object.keys(rules)).toContain('ecmaVersion');
+        expect(rulesKeys).to.contain('ecmaVersion');
       });
 
       it('have a sourceType key', () => {
-        expect(Object.keys(rules)).toContain('sourceType');
+        expect(rulesKeys).to.contain('sourceType');
       });
 
       it('not have any other keys', () => {
-        expect(Object.keys(rules)).toEqual(['ecmaVersion', 'sourceType']);
+        expect(rulesKeys).to.deep.equal(['ecmaVersion', 'sourceType']);
       });
 
       describe('the ecmaVersion key should', () => {
         const rule = rules.ecmaVersion;
 
         it('be ES2015', () => {
-          expect(rule).toEqual(6);
+          expect(rule).to.equal(6);
         });
       });
 
@@ -61,7 +66,7 @@ describe('@dwp/eslint-config-base', () => {
         const rule = rules.sourceType;
 
         it('be module', () => {
-          expect(rule).toEqual('module');
+          expect(rule).to.equal('module');
         });
       });
     });
@@ -70,7 +75,7 @@ describe('@dwp/eslint-config-base', () => {
       const rule = eslintConfig.root;
 
       it('be true', () => {
-        expect(rule).toEqual(true);
+        expect(rule).to.equal(true);
       });
     });
 
@@ -78,7 +83,7 @@ describe('@dwp/eslint-config-base', () => {
       const rule = eslintConfig.extends;
 
       it('inherit recommended settings', () => {
-        expect(rule).toEqual(['eslint:recommended', 'airbnb-base']);
+        expect(rule).to.deep.equal(['eslint:recommended', 'airbnb-base']);
       });
     });
 
@@ -86,20 +91,20 @@ describe('@dwp/eslint-config-base', () => {
       const rule = eslintConfig.env;
 
       it('be an object', () => {
-        expect(rule).toEqual(jasmine.any(Object));
+        expect(rule).to.be.an('Object');
       });
 
       it('have an es6 key', () => {
-        expect(Object.keys(rule)).toContain('es6');
+        expect(Object.keys(rule)).to.contain('es6');
       });
 
       it('not have any other keys', () => {
-        expect(Object.keys(rule)).toEqual(['es6']);
+        expect(Object.keys(rule)).to.deep.equal(['es6']);
       });
 
       describe('the es6 key should', () => {
         it('be enabled', () => {
-          expect(rule.es6).toEqual(true);
+          expect(rule.es6).to.equal(true);
         });
       });
     });
@@ -108,38 +113,38 @@ describe('@dwp/eslint-config-base', () => {
       const { rules } = eslintConfig;
 
       it('be an object', () => {
-        expect(rules).toEqual(jasmine.any(Object));
+        expect(rules).to.be.an('Object');
       });
 
       it('have an indent key', () => {
-        expect(Object.keys(rules)).toContain('indent');
+        expect(Object.keys(rules)).to.contain('indent');
       });
 
       it('have a valid-jsdoc key', () => {
-        expect(Object.keys(rules)).toContain('valid-jsdoc');
+        expect(Object.keys(rules)).to.contain('valid-jsdoc');
       });
 
       it('should not have any other keys', () => {
-        expect(Object.keys(rules)).toEqual(['brace-style', 'curly', 'indent', 'semi', 'valid-jsdoc']);
+        expect(Object.keys(rules)).to.deep.equal(['brace-style', 'curly', 'indent', 'semi', 'valid-jsdoc']);
       });
 
       describe('the brace-style key should', () => {
         const rule = rules['brace-style'];
 
         it('raise an error', () => {
-          expect(rule[0]).toEqual('error');
+          expect(rule[0]).to.equal('error');
         });
 
         it("when the 1tbs isn't applied", () => {
-          expect(rule[1]).toEqual('1tbs');
+          expect(rule[1]).to.equal('1tbs');
         });
 
         it('and not allow single lines', () => {
-          expect(rule[2]).toEqual({ allowSingleLine: false });
+          expect(rule[2]).to.deep.equal({ allowSingleLine: false });
         });
 
         it('and not do anything else', () => {
-          expect(rule).toEqual(['error', '1tbs', { allowSingleLine: false }]);
+          expect(rule).to.deep.equal(['error', '1tbs', { allowSingleLine: false }]);
         });
       });
 
@@ -147,15 +152,15 @@ describe('@dwp/eslint-config-base', () => {
         const rule = rules.curly;
 
         it('raise an error', () => {
-          expect(rule[0]).toEqual('error');
+          expect(rule[0]).to.equal('error');
         });
 
         it('in all circumstances', () => {
-          expect(rule[1]).toEqual('all');
+          expect(rule[1]).to.equal('all');
         });
 
         it('and not do anything else', () => {
-          expect(rule).toEqual(['error', 'all']);
+          expect(rule).to.deep.equal(['error', 'all']);
         });
       });
 
@@ -163,19 +168,19 @@ describe('@dwp/eslint-config-base', () => {
         const rule = rules.semi;
 
         it('raise an error', () => {
-          expect(rule[0]).toEqual('error');
+          expect(rule[0]).to.equal('error');
         });
 
         it("when semi colons aren't used", () => {
-          expect(rule[1]).toEqual('always');
+          expect(rule[1]).to.equal('always');
         });
 
         it('and when semi colons are omitted from a one line block', () => {
-          expect(rule[2]).toEqual({ omitLastInOneLineBlock: false });
+          expect(rule[2]).to.deep.equal({ omitLastInOneLineBlock: false });
         });
 
         it('and not do anything else', () => {
-          expect(rule).toEqual(['error', 'always', { omitLastInOneLineBlock: false }]);
+          expect(rule).to.deep.equal(['error', 'always', { omitLastInOneLineBlock: false }]);
         });
       });
 
@@ -183,15 +188,15 @@ describe('@dwp/eslint-config-base', () => {
         const rule = rules.indent;
 
         it('raise an error', () => {
-          expect(rule[0]).toEqual('error');
+          expect(rule[0]).to.equal('error');
         });
 
         it('when identation is not 4 spaces', () => {
-          expect(rule[1]).toEqual(2);
+          expect(rule[1]).to.equal(2);
         });
 
         it('and not do anything else', () => {
-          expect(rule).toEqual(['error', 2]);
+          expect(rule).to.deep.equal(['error', 2]);
         });
       });
 
@@ -199,11 +204,11 @@ describe('@dwp/eslint-config-base', () => {
         const rule = rules['valid-jsdoc'];
 
         it('raise an error if not applied', () => {
-          expect(rule).toEqual('error');
+          expect(rule).to.equal('error');
         });
 
         it('and not do anything else', () => {
-          expect(rule).toEqual('error');
+          expect(rule).to.equal('error');
         });
       });
     });
