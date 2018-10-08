@@ -33,7 +33,3 @@ jobs:
         - stage: unit-tests
           script:
               - npm run tests:unit
-
-        - stage: quality-tests
-          script:
-              - npm run quality:sonar

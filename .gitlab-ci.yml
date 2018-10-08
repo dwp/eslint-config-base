@@ -157,15 +157,6 @@ unit:
             - .coverage/unit/lcov.info
     coverage: /^Lines\s*:\s(\d+(?:.\d+)?%)/
 
-sonarjs:
-    stage: quality-tests
-    <<: *executor-docker
-    <<: *node-image
-    <<: *dependency-npm
-    script:
-        - apk update && apk upgrade && apk add openjdk8-jre
-        - npm run quality:sonar
-
 sonar-scanner:
     stage: quality-tests
     <<: *executor-docker
