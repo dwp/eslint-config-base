@@ -28,7 +28,7 @@
     "compliance-tests": "npm run compliance:commits && npm run compliance:lint",
     "compliance:commits": "commitlint --from=develop --to=HEAD",
     "compliance:lint": "eslint --ignore-path .gitignore .",
-    "pipeline": "npm run compliance-tests && npm run security-tests && npm run tests && npm run quality-tests",
+    "pipeline": "npm run compliance-tests && npm run security-tests && npm run tests",
     "precommit": "lint-staged",
     "security-tests": "npm run security:outdated && npm run security:audit",
     "security:audit": "npm audit || true",
@@ -36,9 +36,7 @@
     "security:snyk": "snyk test -dev",
     "test": "npm run pipeline",
     "tests": "npm run tests:unit",
-    "tests:unit": "nyc --report-dir .coverage/unit mocha \"tests/unit/**/*.spec.js\"",
-    "quality-tests": "npm run quality:sonar",
-    "quality:sonar": "sonarjs -e 'tests/**'"
+    "tests:unit": "nyc --report-dir .coverage/unit mocha \"tests/unit/**/*.spec.js\""
   },
   "dependencies": {
     "eslint-config-airbnb-base": "13.1.0",
@@ -55,7 +53,6 @@
     "lint-staged": "7.3.0",
     "mocha": "5.2.0",
     "nyc": "13.0.1",
-    "snyk": "1.101.1",
-    "sonarjs": "1.0.0"
+    "snyk": "1.101.1"
   }
 }
