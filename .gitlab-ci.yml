@@ -6,7 +6,7 @@
   image: node:9.11.2-alpine@sha256:8dafc0968fb4d62834d9b826d85a8feecc69bd72cd51723c62c7db67c6dec6fa
 
 .blackduck-image: &blackduck-image
-  image: $CI_REGISTRY/provisioning/blackduck-cli@sha256:1e047d989d5f395601a7cf7dcb11f7350437510101f7b0690a2f4293578542ad
+  image: $CI_REGISTRY/provisioning/blackduck-cli@sha256:10c0a7b022d40ec973a2af1ff418212e265d20d8c85adff836e871d2c00a5b64
 
 .blackduck-script: &blackduck-script
   script:
