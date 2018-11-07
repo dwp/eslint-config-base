@@ -2,6 +2,14 @@
   "name": "@dwp/eslint-config-base",
   "version": "1.0.0",
   "author": "Adam Moss",
+  "contributors": [
+    {
+      "name": "Mike Shaw"
+    },
+    {
+      "name": "James Gauld"
+    }
+  ],
   "license": "ISC",
   "description": "base configuration for eslint",
   "keywords": [
