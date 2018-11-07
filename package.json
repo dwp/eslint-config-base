@@ -24,12 +24,10 @@
   ],
   "main": "src/index.js",
   "scripts": {
-    "commitmsg": "commitlint --edit",
     "compliance-tests": "npm run compliance:commits && npm run compliance:lint",
     "compliance:commits": "commitlint --from=develop --to=HEAD",
     "compliance:lint": "eslint --ignore-path .gitignore .",
     "pipeline": "npm run compliance-tests && npm run security-tests && npm run tests",
-    "precommit": "lint-staged",
     "security-tests": "npm run security:outdated && npm run security:audit",
     "security:audit": "npm audit || true",
     "security:outdated": "npm outdated || true",
