@@ -5,6 +5,13 @@
 .node-image: &node-image
     image: node:9.11.2-alpine@sha256:8dafc0968fb4d62834d9b826d85a8feecc69bd72cd51723c62c7db67c6dec6fa
 
+.blackduck-image: &blackduck-image
+    image: $CI_REGISTRY/provisioning/blackduck-cli@sha256:1e047d989d5f395601a7cf7dcb11f7350437510101f7b0690a2f4293578542ad
+
+.blackduck-script: &blackduck-script
+    script:
+      - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
+
 .install-git: &install-git
     before_script:
         - apk update && apk upgrade && apk add --no-cache git
@@ -113,17 +120,17 @@ nsp:
 blackduck:
     stage: security-tests
     <<: *executor-docker
+    <<: *blackduck-image
     <<: *dependency-npm
-    script:
-        - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
+    <<: *blackduck-script
     <<: *not-branches
 
 blackduck-branch:
     stage: security-tests
     <<: *executor-docker
+    <<: *blackduck-image
     <<: *dependency-npm
-    script:
-        - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
+    <<: *blackduck-script
     <<: *only-branches
     when: manual
 
@@ -160,7 +167,7 @@ unit:
 sonar-scanner:
     stage: quality-tests
     <<: *executor-docker
-    <<: *node-image
+    image: $CI_REGISTRY/provisioning/docker-sonar-scanner:latest
     <<: *dependency-unit
     script:
         - sed -i.bak -e "s|^SF:\(.*/[[:digit:]]\{1,\}/.*/\)|SF:$( pwd )/|g" .coverage/unit/lcov.info
