@@ -1,175 +1,180 @@
 .executor-docker: &executor-docker
-    tags:
-        - docker
+  tags:
+    - docker
 
 .node-image: &node-image
-    image: node:9.11.2-alpine@sha256:8dafc0968fb4d62834d9b826d85a8feecc69bd72cd51723c62c7db67c6dec6fa
+  image: node:9.11.2-alpine@sha256:8dafc0968fb4d62834d9b826d85a8feecc69bd72cd51723c62c7db67c6dec6fa
 
 .blackduck-image: &blackduck-image
-    image: $CI_REGISTRY/provisioning/blackduck-cli@sha256:1e047d989d5f395601a7cf7dcb11f7350437510101f7b0690a2f4293578542ad
+  image: $CI_REGISTRY/provisioning/blackduck-cli@sha256:1e047d989d5f395601a7cf7dcb11f7350437510101f7b0690a2f4293578542ad
 
 .blackduck-script: &blackduck-script
-    script:
-      - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
+  script:
+    - blackduck ${CI_PROJECT_NAME} ${CI_COMMIT_REF_NAME}
+
+.checkmarx-image: &checkmarx-image
+  image: $CI_REGISTRY/provisioning/checkmarx-cli:latest
+
+.checkmarx-script: &checkmarx-script
+  script:
+    - checkmarx ${CI_PROJECT_NAME}@${CI_PROJECT_NAMESPACE}#${CI_COMMIT_REF_NAME} Engineering
 
 .install-git: &install-git
-    before_script:
-        - apk update && apk upgrade && apk add --no-cache git
+  before_script:
+    - apk update && apk upgrade && apk add --no-cache git
 
 .dependency-npm: &dependency-npm
-    dependencies:
-        - npm
+  dependencies:
+    - npm
 
 .dependency-unit: &dependency-unit
-    dependencies:
-        - npm
-        - unit
+  dependencies:
+    - npm
+    - unit
 
 .only-branches: &only-branches
-    except:
-        - master
-        - develop
-        - tags
-        - triggers
+  except:
+    - master
+    - develop
+    - tags
+    - triggers
 
 .not-branches: &not-branches
-    only:
-        - master
-        - develop
-        - tags
+  only:
+    - master
+    - develop
+    - tags
 
 stages:
-    - build
-    - compliance-tests
-    - security-tests
-    - unit-tests
-    - quality-tests
+  - build
+  - compliance-tests
+  - security-tests
+  - unit-tests
+  - quality-tests
 
 npm:
-    stage: build
-    <<: *executor-docker
-    <<: *node-image
-    script:
-        - HASH="$( md5sum package.json )"
-        - CACHE=/tmp/${CI_PROJECT_NAME}_${HASH}.tgz
-        - if [ -f "$CACHE" ]; then
-              tar -xzf "$CACHE";
-          else
-              rm -f /tmp/${CI_PROJECT_NAME}_*.tgz &&
-              npm install &&
-              tar -czf "$CACHE" node_modules;
-          fi
-    artifacts:
-        name: "${CI_PROJECT_NAME}_${CI_JOB_ID}_${CI_COMMIT_SHA}"
-        expire_in: 10 mins
-        paths:
-            - node_modules
+  stage: build
+  <<: *executor-docker
+  <<: *node-image
+  script:
+    - HASH="$( md5sum package.json )"
+    - CACHE=/tmp/${CI_PROJECT_NAME}_${HASH}.tgz
+    - if [ -f "$CACHE" ]; then
+        tar -xzf "$CACHE";
+      else
+        rm -f /tmp/${CI_PROJECT_NAME}_*.tgz &&
+        npm install &&
+        tar -czf "$CACHE" node_modules;
+      fi
+  artifacts:
+    name: "${CI_PROJECT_NAME}_${CI_JOB_ID}_${CI_COMMIT_SHA}"
+    expire_in: 10 mins
+    paths:
+      - node_modules
 
 commitlint-branch:
-    stage: compliance-tests
-    <<: *executor-docker
-    <<: *node-image
-    <<: *install-git
-    <<: *dependency-npm
-    script:
-        - git fetch origin develop --quiet
-        - git checkout develop --quiet
-        - git reset --hard origin/develop --quiet
-        - git checkout - --quiet
-        - npm run compliance:commits
-    <<: *only-branches
+  stage: compliance-tests
+  <<: *executor-docker
+  <<: *node-image
+  <<: *install-git
+  <<: *dependency-npm
+  script:
+    - git fetch origin develop --quiet
+    - git checkout develop --quiet
+    - git reset --hard origin/develop --quiet
+    - git checkout - --quiet
+    - npm run compliance:commits
+  <<: *only-branches
 
 commitlint-develop:
-    stage: compliance-tests
-    <<: *executor-docker
-    <<: *node-image
-    <<: *install-git
-    <<: *dependency-npm
-    script:
-        - git fetch origin master --quiet
-        - git checkout master --quiet
-        - git reset --hard origin/master --quiet
-        - git checkout - --quiet
-        - ./node_modules/.bin/commitlint --from=master --to=HEAD
-    <<: *not-branches
+  stage: compliance-tests
+  <<: *executor-docker
+  <<: *node-image
+  <<: *install-git
+  <<: *dependency-npm
+  script:
+    - git fetch origin master --quiet
+    - git checkout master --quiet
+    - git reset --hard origin/master --quiet
+    - git checkout - --quiet
+    - ./node_modules/.bin/commitlint --from=master --to=HEAD
+  <<: *not-branches
 
 eslint:
-    stage: compliance-tests
-    <<: *executor-docker
-    <<: *node-image
-    <<: *dependency-npm
-    script:
-        - npm run compliance:lint
+  stage: compliance-tests
+  <<: *executor-docker
+  <<: *node-image
+  <<: *dependency-npm
+  script:
+    - npm run compliance:lint
 
 outdated:
-    stage: security-tests
-    <<: *executor-docker
-    <<: *node-image
-    <<: *dependency-npm
-    script:
-        - npm outdated
-    allow_failure: true
+  stage: security-tests
+  <<: *executor-docker
+  <<: *node-image
+  <<: *dependency-npm
+  script:
+    - npm outdated
+  allow_failure: true
 
 nsp:
-    stage: security-tests
-    <<: *executor-docker
-    <<: *node-image
-    script:
-        - npm run security:audit
+  stage: security-tests
+  <<: *executor-docker
+  <<: *node-image
+  script:
+    - npm run security:audit
 
 blackduck:
-    stage: security-tests
-    <<: *executor-docker
-    <<: *blackduck-image
-    <<: *dependency-npm
-    <<: *blackduck-script
-    <<: *not-branches
+  stage: security-tests
+  <<: *executor-docker
+  <<: *blackduck-image
+  <<: *dependency-npm
+  <<: *blackduck-script
+  <<: *not-branches
 
 blackduck-branch:
-    stage: security-tests
-    <<: *executor-docker
-    <<: *blackduck-image
-    <<: *dependency-npm
-    <<: *blackduck-script
-    <<: *only-branches
-    when: manual
+  stage: security-tests
+  <<: *executor-docker
+  <<: *blackduck-image
+  <<: *dependency-npm
+  <<: *blackduck-script
+  <<: *only-branches
+  when: manual
 
 checkmarx:
-    stage: security-tests
-    <<: *executor-docker
-    image: $CI_REGISTRY/provisioning/checkmarx-cli:latest
-    script:
-        - checkmarx ${CI_PROJECT_NAME}@${CI_PROJECT_NAMESPACE}#${CI_COMMIT_REF_NAME} Engineering
-    <<: *not-branches
+  stage: security-tests
+  <<: *executor-docker
+  <<: *checkmarx-image
+  <<: *checkmarx-script
+  <<: *not-branches
 
 checkmarx-branch:
-    stage: security-tests
-    <<: *executor-docker
-    image: $CI_REGISTRY/provisioning/checkmarx-cli:latest
-    script:
-        - checkmarx ${CI_PROJECT_NAME}@${CI_PROJECT_NAMESPACE}#${CI_COMMIT_REF_NAME} Engineering
-    <<: *only-branches
-    when: manual
+  stage: security-tests
+  <<: *executor-docker
+  <<: *checkmarx-image
+  <<: *checkmarx-script
+  <<: *only-branches
+  when: manual
 
 unit:
-    stage: unit-tests
-    <<: *executor-docker
-    <<: *node-image
-    <<: *dependency-npm
-    script:
-        - npm run tests:unit
-    artifacts:
-        expire_in: 10 mins
-        paths:
-            - .coverage/unit/lcov.info
-    coverage: /^Lines\s*:\s(\d+(?:.\d+)?%)/
+  stage: unit-tests
+  <<: *executor-docker
+  <<: *node-image
+  <<: *dependency-npm
+  script:
+    - npm run tests:unit
+  artifacts:
+    expire_in: 10 mins
+    paths:
+      - .coverage/unit/lcov.info
+  coverage: /^Lines\s*:\s(\d+(?:.\d+)?%)/
 
 sonar-scanner:
-    stage: quality-tests
-    <<: *executor-docker
-    image: $CI_REGISTRY/provisioning/docker-sonar-scanner:latest
-    <<: *dependency-unit
-    script:
-        - sed -i.bak -e "s|^SF:\(.*/[[:digit:]]\{1,\}/.*/\)|SF:$( pwd )/|g" .coverage/unit/lcov.info
-        - npm run quality:sonar-scanner
-    <<: *not-branches
+  stage: quality-tests
+  <<: *executor-docker
+  image: $CI_REGISTRY/provisioning/docker-sonar-scanner:latest
+  <<: *dependency-unit
+  script:
+    - sed -i.bak -e "s|^SF:\(.*/[[:digit:]]\{1,\}/.*/\)|SF:$( pwd )/|g" .coverage/unit/lcov.info
+    - sonar-scanner
+  <<: *not-branches
