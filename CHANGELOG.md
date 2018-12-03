@@ -1,15 +1,43 @@
-# Changelog
-All notable changes to this project will be documented in this file.
+# [2.0.0](https://github.com/dwp/eslint-config-base/compare/v1.0.0...v2.0.0) (2018-12-03)
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-### Changed
-- New version of our eslint ruleset
-- Amend npm script names and groups
-- Swap out NSP for `npm audit`
-- Swap out Jasmine for Mocha and Chai for testing
+### Bug Fixes
 
-## [1.0.0] - 2018-01-15
-### Added
-- Initial version of our eslint ruleset
+* add git to docker container when needed ([fc23e40](https://github.com/dwp/eslint-config-base/commit/fc23e40))
+* amend eslint config file name in package json ([f1c5bdf](https://github.com/dwp/eslint-config-base/commit/f1c5bdf))
+* amend format of npmrc file ([6483e7d](https://github.com/dwp/eslint-config-base/commit/6483e7d))
+* amend hashing of package.json ([3ea8ae1](https://github.com/dwp/eslint-config-base/commit/3ea8ae1))
+* quote variable names ([5b4fb37](https://github.com/dwp/eslint-config-base/commit/5b4fb37))
+
+
+### Features
+
+* **security:** swap out nsp for npm audit ([502860b](https://github.com/dwp/eslint-config-base/commit/502860b))
+* add checkmarx anchors in gitlab ci script ([a18dc09](https://github.com/dwp/eslint-config-base/commit/a18dc09))
+* add config files to nyc exclude list ([5577c99](https://github.com/dwp/eslint-config-base/commit/5577c99))
+* **travis:** update npm script names ([5ffed15](https://github.com/dwp/eslint-config-base/commit/5ffed15))
+* add contributors to package json ([c4f11de](https://github.com/dwp/eslint-config-base/commit/c4f11de))
+* add jdk to node image for sonarjs step ([7f94e38](https://github.com/dwp/eslint-config-base/commit/7f94e38))
+* add rules and tests for new standard ([019a831](https://github.com/dwp/eslint-config-base/commit/019a831))
+* amend images for checkmarx/blackduck steps ([d282c42](https://github.com/dwp/eslint-config-base/commit/d282c42))
+* amend lint-staged config file ([dbea7f7](https://github.com/dwp/eslint-config-base/commit/dbea7f7))
+* amend npm script names and groups ([3b827ae](https://github.com/dwp/eslint-config-base/commit/3b827ae))
+* change executor to docker ([4f6ea8b](https://github.com/dwp/eslint-config-base/commit/4f6ea8b))
+* implement blackduck cli docker image ([c1beb49](https://github.com/dwp/eslint-config-base/commit/c1beb49))
+* move husky scripts to huskyrc file ([a0e398c](https://github.com/dwp/eslint-config-base/commit/a0e398c))
+* remove deprecated sonarjs package integration ([b918073](https://github.com/dwp/eslint-config-base/commit/b918073))
+* remove nvm setup ([3f835b0](https://github.com/dwp/eslint-config-base/commit/3f835b0))
+* swap out jasmine for mocha and chai ([6caf5d0](https://github.com/dwp/eslint-config-base/commit/6caf5d0))
+* switch to node alpine image ([5ab3e76](https://github.com/dwp/eslint-config-base/commit/5ab3e76))
+
+
+
+# [1.0.0](https://github.com/dwp/eslint-config-base/compare/fb7a47c...v1.0.0) (2018-02-10)
+
+
+### Features
+
+* **eslint:** add default eslint rules ([fb7a47c](https://github.com/dwp/eslint-config-base/commit/fb7a47c))
+
+
+
