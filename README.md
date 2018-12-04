@@ -14,7 +14,7 @@ npm install --save-dev @dwp/eslint-config-base eslint
 Add an `.eslintrc.js` file that looks something like:
 
 ```js
-module.exports = require( '@dwp/eslint-config-base' );
+module.exports = require('@dwp/eslint-config-base');
 ```
 
 You can add your own rules to enhance this, but in doing so please ensure you don't weaken the baseline ruleset.
