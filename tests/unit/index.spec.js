@@ -57,8 +57,8 @@ describe('@dwp/eslint-config-base', () => {
       describe('the ecmaVersion key should', () => {
         const rule = rules.ecmaVersion;
 
-        it('be ES2015', () => {
-          expect(rule).to.equal(6);
+        it('be ES2017', () => {
+          expect(rule).to.equal(2017);
         });
       });
 
