@@ -28,3 +28,9 @@ Add `eslint` to your test suite like this, or see our [package.json](package.jso
 ```json
     "test": "eslint ."
 ```
+
+## Known issues
+
+### Dangling commas
+
+This config enforces dangling commas in multiline function arguments, which is supported from version 8 onwards. If you're using an older version of node, you'll need to ignore this rule for functions according to the documentation here: https://eslint.org/docs/rules/comma-dangle.
