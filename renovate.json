@@ -1,12 +1,12 @@
 {
-    "assignees": [
-        "adam-moss"
-    ],
-    "devDependencies": {
-        "automerge": true
-    },
-    "prHourlyLimit": 0,
-    "reviewers": [
-        "adam-moss"
-    ]
+  "assignees": [
+    "mike-shaw"
+  ],
+  "devDependencies": {
+    "automerge": true
+  },
+  "prHourlyLimit": 0,
+  "reviewers": [
+    "mike-shaw"
+  ]
 }
