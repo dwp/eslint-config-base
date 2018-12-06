@@ -1,4 +1,14 @@
-# [2.0.0](https://github.com/dwp/eslint-config-base/compare/v1.0.0...v2.0.0) (2018-12-03)
+## [2.0.1](https://github.com/dwp/eslint-config-base/compare/v2.0.0...v2.0.1) (2018-12-06)
+
+
+### Features
+
+* amend ecmascript version to be 2017 ([c9036ab](https://github.com/dwp/eslint-config-base/commit/c9036ab))
+* amend renovate config assignee and reviewer ([9dad3d6](https://github.com/dwp/eslint-config-base/commit/9dad3d6))
+
+
+
+# [2.0.0](https://github.com/dwp/eslint-config-base/compare/v1.0.0...v2.0.0) (2018-12-04)
 
 
 ### Bug Fixes
