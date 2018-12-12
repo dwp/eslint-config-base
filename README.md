@@ -26,11 +26,15 @@ Don't use `.eslintrc` (low precedence) or `package.json` (even lower, and just p
 Add `eslint` to your test suite like this, or see our [package.json](package.json) for an example of how we do it:
 
 ```json
-    "test": "eslint ."
+"test": "eslint ."
 ```
 
-## Known issues
+## Recommendations
+
+### Unary operators
+
+It is recommended that developers use the `++`/`--` operators as pre (`++variable`) rather than post (`variable++`), unless explicitly required in the statement.
 
 ### Dangling commas
 
-This config enforces dangling commas in multiline function arguments, which is supported from version 8 onwards. If you're using an older version of node, you'll need to ignore this rule for functions according to the documentation here: https://eslint.org/docs/rules/comma-dangle.
+This config enforces dangling commas in multiline function arguments, which is supported from node version 8 onwards. If you're using an older version of node, you'll need to ignore this rule for functions according to the documentation here: https://eslint.org/docs/rules/comma-dangle.

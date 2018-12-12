@@ -12,6 +12,7 @@ module.exports = {
     'brace-style': ['error', '1tbs', { allowSingleLine: false }],
     curly: ['error', 'all'],
     indent: ['error', 2],
+    'no-plusplus': 'off',
     semi: ['error', 'always', { omitLastInOneLineBlock: false }],
     'valid-jsdoc': 'error',
   },
