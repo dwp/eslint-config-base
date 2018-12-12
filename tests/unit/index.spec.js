@@ -116,8 +116,24 @@ describe('@dwp/eslint-config-base', () => {
         expect(rules).to.be.an('Object');
       });
 
+      it('have a brace-style key', () => {
+        expect(Object.keys(rules)).to.contain('brace-style');
+      });
+
+      it('have a curly key', () => {
+        expect(Object.keys(rules)).to.contain('curly');
+      });
+
       it('have an indent key', () => {
         expect(Object.keys(rules)).to.contain('indent');
+      });
+
+      it('have a no-plusplus key', () => {
+        expect(Object.keys(rules)).to.contain('no-plusplus');
+      });
+
+      it('have a semi key', () => {
+        expect(Object.keys(rules)).to.contain('semi');
       });
 
       it('have a valid-jsdoc key', () => {
@@ -125,7 +141,7 @@ describe('@dwp/eslint-config-base', () => {
       });
 
       it('should not have any other keys', () => {
-        expect(Object.keys(rules)).to.deep.equal(['brace-style', 'curly', 'indent', 'semi', 'valid-jsdoc']);
+        expect(Object.keys(rules)).to.deep.equal(['brace-style', 'curly', 'indent', 'no-plusplus', 'semi', 'valid-jsdoc']);
       });
 
       describe('the brace-style key should', () => {
@@ -164,6 +180,30 @@ describe('@dwp/eslint-config-base', () => {
         });
       });
 
+      describe('the indent key should', () => {
+        const rule = rules.indent;
+
+        it('raise an error', () => {
+          expect(rule[0]).to.equal('error');
+        });
+
+        it('when identation is not 4 spaces', () => {
+          expect(rule[1]).to.equal(2);
+        });
+
+        it('and not do anything else', () => {
+          expect(rule).to.deep.equal(['error', 2]);
+        });
+      });
+
+      describe('the no-plusplus key should', () => {
+        const rule = rules['no-plusplus'];
+
+        it('be turned off', () => {
+          expect(rule).to.equal('off');
+        });
+      });
+
       describe('the semi key should', () => {
         const rule = rules.semi;
 
@@ -181,22 +221,6 @@ describe('@dwp/eslint-config-base', () => {
 
         it('and not do anything else', () => {
           expect(rule).to.deep.equal(['error', 'always', { omitLastInOneLineBlock: false }]);
-        });
-      });
-
-      describe('the indent key should', () => {
-        const rule = rules.indent;
-
-        it('raise an error', () => {
-          expect(rule[0]).to.equal('error');
-        });
-
-        it('when identation is not 4 spaces', () => {
-          expect(rule[1]).to.equal(2);
-        });
-
-        it('and not do anything else', () => {
-          expect(rule).to.deep.equal(['error', 2]);
         });
       });
 
