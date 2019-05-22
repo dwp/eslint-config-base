@@ -3,7 +3,7 @@
     - docker
 
 .node-image: &node-image
-  image: node:10.15.2-alpine@sha256:9232f8fb2e1838c50920e70eb20370c7503d50954f976c11c20f752c8b9dc07f
+  image: node:10.15.2-alpine@sha256:8ac058c7735e957c455dea33bce69c90e3dd83793e0c8ef6f8d73d6a894980c3
 
 .blackduck-image: &blackduck-image
   image: $CI_REGISTRY/provisioning/blackduck-cli@sha256:10c0a7b022d40ec973a2af1ff418212e265d20d8c85adff836e871d2c00a5b64
