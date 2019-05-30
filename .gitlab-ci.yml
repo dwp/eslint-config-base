@@ -6,7 +6,7 @@
   image: node:10.16.0-alpine@sha256:730e6a60c7e3e62d82218f313b4d1c8ffbfc7adff9e11dd66ea8b4e61c269a06
 
 .checkmarx-image: &checkmarx-image
-  image: $CI_REGISTRY/provisioning/checkmarx-cli:latest
+  image: $CI_REGISTRY/engineering-practice/checkmarx-cli:latest
 
 .checkmarx-script: &checkmarx-script
   script:
