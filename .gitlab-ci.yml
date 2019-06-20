@@ -148,7 +148,7 @@ unit:
 sonar-scanner:
   stage: quality-tests
   <<: *executor-docker
-  image: $CI_REGISTRY/provisioning/docker-sonar-scanner:latest
+  image: $CI_REGISTRY/engineering-practice/sonar-scanner:latest
   <<: *dependency-unit
   script:
     - sed -i.bak -e "s|^SF:\(.*/[[:digit:]]\{1,\}/.*/\)|SF:$( pwd )/|g" .coverage/unit/lcov.info
