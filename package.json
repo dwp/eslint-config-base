@@ -55,7 +55,7 @@
     "@dwp/nyc-config-base": "1.0.0",
     "chai": "4.2.0",
     "eslint": "5.16.0",
-    "husky": "2.3.0",
+    "husky": "2.4.1",
     "lint-staged": "8.1.7",
     "mocha": "6.1.4",
     "nyc": "14.1.1",
