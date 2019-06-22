@@ -54,7 +54,7 @@
     "@dwp/eslint-config-mocha": "1.0.0",
     "@dwp/nyc-config-base": "1.0.0",
     "chai": "4.2.0",
-    "eslint": "5.16.0",
+    "eslint": "6.0.0",
     "husky": "2.4.1",
     "lint-staged": "8.2.1",
     "mocha": "6.1.4",
