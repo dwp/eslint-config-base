@@ -110,7 +110,7 @@ outdated:
     - npm outdated
   allow_failure: true
 
-nsp:
+audit:
   stage: security-tests
   <<: *executor-docker
   <<: *node-image
