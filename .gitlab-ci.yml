@@ -61,7 +61,7 @@ npm:
       fi
   artifacts:
     name: "${CI_PROJECT_NAME}_${CI_JOB_ID}_${CI_COMMIT_SHA}"
-    expire_in: 10 mins
+    expire_in: 30 mins
     paths:
       - node_modules
 
@@ -140,7 +140,7 @@ unit:
   script:
     - npm run tests:unit
   artifacts:
-    expire_in: 10 mins
+    expire_in: 30 mins
     paths:
       - .coverage/unit/lcov.info
   coverage: /^Lines\s*:\s(\d+(?:.\d+)?%)/
