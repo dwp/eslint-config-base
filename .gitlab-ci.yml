@@ -28,14 +28,12 @@
 .only-branches: &only-branches
   except:
     - master
-    - develop
     - tags
     - triggers
 
 .not-branches: &not-branches
   only:
     - master
-    - develop
     - tags
 
 stages:
@@ -72,26 +70,12 @@ commitlint-branch:
   <<: *install-git
   <<: *dependency-npm
   script:
-    - git fetch origin develop --quiet
-    - git checkout develop --quiet
-    - git reset --hard origin/develop --quiet
-    - git checkout - --quiet
-    - npm run compliance:commits
-  <<: *only-branches
-
-commitlint-develop:
-  stage: compliance-tests
-  <<: *executor-docker
-  <<: *node-image
-  <<: *install-git
-  <<: *dependency-npm
-  script:
     - git fetch origin master --quiet
     - git checkout master --quiet
     - git reset --hard origin/master --quiet
     - git checkout - --quiet
-    - ./node_modules/.bin/commitlint --from=master --to=HEAD
-  <<: *not-branches
+    - npm run compliance:commits
+  <<: *only-branches
 
 eslint:
   stage: compliance-tests
