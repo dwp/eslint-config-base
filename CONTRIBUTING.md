@@ -14,7 +14,7 @@ We ask you not to submit security concerns via GitHub. For details on submitting
 
 We have a 3 step process for contributions:
 
-1.  Fork our repo and commit changes to a new branch based off `develop`, making sure to sign-off those changes for the [Developer Certificate of Origin](#developer-certification-of-origin-dco).
+1.  Fork our repo and commit changes to a new branch based off `master`, making sure to sign-off those changes for the [Developer Certificate of Origin](#developer-certification-of-origin-dco).
 2.  Create a GitHub Pull Request for your change, following the instructions in the pull request template (if present).
 3.  A [Code Review](#code-review-process) will then be undertaken by the project maintainers.
 
@@ -33,7 +33,7 @@ Once you open a pull request, project maintainers will review your code and resp
 
 1.  Two thumbs-up (:+1:) are required from project maintainers.
 2.  When ready, your pull request will be tagged with label `Ready For Merge`.
-3.  Your change will be merged into the project's `develop` branch and may be noted in the project's `CHANGELOG.md` at the time of release.
+3.  Your change will be merged into the project's `master` branch and may be noted in the project's `CHANGELOG.md` at the time of release.
 
 ### Developer Certification of Origin (DCO)
 
@@ -58,7 +58,7 @@ By making a contribution to this project, I certify that:
 
 (b) The contribution is based upon previous work that, to the
     best of my knowledge, is covered under an appropriate open
-    source license and I have the right under that license to   
+    source license and I have the right under that license to
     submit that work with modifications, whether created in whole
     or in part by me, under the same open source license (unless
     I am permitted to submit under a different license), as
