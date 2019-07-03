@@ -45,7 +45,7 @@
     "tests:unit": "nyc --report-dir .coverage/unit mocha \"tests/unit/**/*.spec.js\""
   },
   "dependencies": {
-    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-config-airbnb-base": "13.2.0",
     "eslint-plugin-import": "2.18.0"
   },
   "devDependencies": {
