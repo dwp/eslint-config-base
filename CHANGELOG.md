@@ -1,3 +1,12 @@
+# [3.0.0](https://github.com/dwp/eslint-config-base/compare/v2.1.0...v3.0.0) (2019-08-07)
+
+
+### Features
+
+* upgrade to eslint v6 ([70b95b65](https://github.com/dwp/eslint-config-base/commit/70b95b65))
+
+
+
 # [2.1.0](https://github.com/dwp/eslint-config-base/compare/v2.0.1...v2.1.0) (2018-12-13)
 
 
@@ -57,6 +66,3 @@
 ### Features
 
 * **eslint:** add default eslint rules ([fb7a47c](https://github.com/dwp/eslint-config-base/commit/fb7a47c))
-
-
-
