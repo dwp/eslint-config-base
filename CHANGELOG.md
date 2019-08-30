@@ -1,3 +1,12 @@
+# [4.0.0](https://github.com/dwp/eslint-config-base/compare/v3.0.0...v4.0.0) (2019-08-30)
+
+
+### Features
+
+* upgrade to airbnb config v14 ([12380ad2](https://github.com/dwp/eslint-config-base/commit/12380ad2))
+
+
+
 # [3.0.0](https://github.com/dwp/eslint-config-base/compare/v2.1.0...v3.0.0) (2019-08-07)
 
 
