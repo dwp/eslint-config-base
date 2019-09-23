@@ -1,3 +1,12 @@
+# [4.1.0](https://github.com/dwp/eslint-config-base/compare/v4.0.0...v4.1.0) (2019-09-23)
+
+
+### Features
+
+* update ecma version ([2e7cb4c2](https://github.com/dwp/eslint-config-base/commit/2e7cb4c2))
+
+
+
 # [4.0.0](https://github.com/dwp/eslint-config-base/compare/v3.0.0...v4.0.0) (2019-08-30)
 
 
