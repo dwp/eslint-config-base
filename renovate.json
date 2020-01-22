@@ -2,9 +2,6 @@
   "assignees": [
     "mike-shaw"
   ],
-  "devDependencies": {
-    "automerge": true
-  },
   "prHourlyLimit": 0,
   "reviewers": [
     "mike-shaw"
