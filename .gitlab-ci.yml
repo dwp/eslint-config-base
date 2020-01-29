@@ -110,7 +110,8 @@ checkmarx:
 
 checkmarx-branch:
   stage: security-tests
-  <<: *executor-docker
+  tags:
+    - transparent
   <<: *checkmarx-image
   <<: *checkmarx-script
   <<: *only-branches
