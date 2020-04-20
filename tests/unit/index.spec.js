@@ -191,8 +191,12 @@ describe('@dwp/eslint-config-base', () => {
           expect(rule[1]).to.equal(2);
         });
 
+        it('add set switch indentation level to match base indentation level', () => {
+          expect(rule[2]).to.deep.equal({ SwitchCase: 1 });
+        });
+
         it('and not do anything else', () => {
-          expect(rule).to.deep.equal(['error', 2]);
+          expect(rule).to.deep.equal(['error', 2, { SwitchCase: 1 }]);
         });
       });
 

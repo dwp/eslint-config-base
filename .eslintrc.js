@@ -11,7 +11,7 @@ module.exports = {
   rules: {
     'brace-style': ['error', '1tbs', { allowSingleLine: false }],
     curly: ['error', 'all'],
-    indent: ['error', 2],
+    indent: ['error', 2, { SwitchCase: 1 }],
     'no-plusplus': 'off',
     semi: ['error', 'always', { omitLastInOneLineBlock: false }],
     'valid-jsdoc': 'error',
