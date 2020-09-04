@@ -5,13 +5,6 @@
 .node-image: &node-image
   image: node:12.16.2-alpine@sha256:5646d1e5bc470500414feb3540186c02845db0e0e1788621c271fbf3a0c1830d
 
-.checkmarx-image: &checkmarx-image
-  image: $CI_REGISTRY/engineering-practice/checkmarx-cli:latest
-
-.checkmarx-script: &checkmarx-script
-  script:
-    - checkmarx ${CI_PROJECT_NAME}@${CI_PROJECT_NAMESPACE}#${CI_COMMIT_REF_NAME} Engineering
-
 .install-git: &install-git
   before_script:
     - apk update && apk upgrade && apk add --no-cache git
@@ -100,24 +93,6 @@ audit:
   <<: *node-image
   script:
     - npm run security:audit
-
-checkmarx:
-  stage: security-tests
-  tags:
-    - transparent
-  <<: *executor-docker
-  <<: *checkmarx-image
-  <<: *checkmarx-script
-  <<: *not-branches
-
-checkmarx-branch:
-  stage: security-tests
-  tags:
-    - transparent
-  <<: *checkmarx-image
-  <<: *checkmarx-script
-  <<: *only-branches
-  when: manual
 
 unit:
   stage: unit-tests
