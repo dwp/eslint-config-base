@@ -28,16 +28,5 @@ module.exports = {
     'jsdoc/require-returns-description': ['error'],
     'jsdoc/require-returns-type': ['error'],
     'jsdoc/require-throws': ['error'],
-    'jsdoc/require-jsdoc': ['error', {
-      require: {
-        ArrowFunctionExpression: true,
-        ClassDeclaration: true,
-        ClassExpression: true,
-        FunctionDeclaration: true,
-        FunctionExpression: true,
-        MethodDefinition: true,
-      },
-      contexts: ['ClassProperty'],
-    }],
   },
 };
