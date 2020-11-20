@@ -188,10 +188,6 @@ describe('@dwp/eslint-config-base', () => {
         it('require throws to be documented', () => {
           expect(Object.keys(rules)).to.contain('jsdoc/require-throws');
         });
-
-        it('requires jsdocs to be created', () => {
-          expect(Object.keys(rules)).to.contain('jsdoc/require-jsdoc');
-        });
       });
 
       it('should not have any other keys', () => {
@@ -203,7 +199,7 @@ describe('@dwp/eslint-config-base', () => {
           'jsdoc/require-param-name', 'jsdoc/require-param-type',
           'jsdoc/require-returns', 'jsdoc/require-returns-check',
           'jsdoc/require-returns-description', 'jsdoc/require-returns-type',
-          'jsdoc/require-throws', 'jsdoc/require-jsdoc',
+          'jsdoc/require-throws',
         ]);
       });
 
@@ -437,56 +433,6 @@ describe('@dwp/eslint-config-base', () => {
 
           it('and do nothing else', () => {
             expect(rule).to.deep.equal(['error']);
-          });
-        });
-
-        describe('the require-jsdoc key should', () => {
-          const rule = rules['jsdoc/require-jsdoc'];
-
-          it('raise an error', () => {
-            expect(rule[0]).to.equal('error');
-          });
-
-          it('and include class properties within its contexts', () => {
-            expect(rule[1].contexts).to.contain('ClassProperty');
-          });
-
-          it('and require that arrow functions have a jsdoc block', () => {
-            expect(Object.keys(rule[1].require)).to.contain('ArrowFunctionExpression');
-          });
-
-          it('and require that class declarations have a jsdoc block', () => {
-            expect(Object.keys(rule[1].require)).to.contain('ClassDeclaration');
-          });
-
-          it('and require that class expressions have a jsdoc block', () => {
-            expect(Object.keys(rule[1].require)).to.contain('ClassExpression');
-          });
-
-          it('and require that function declarations have a jsdoc block', () => {
-            expect(Object.keys(rule[1].require)).to.contain('FunctionDeclaration');
-          });
-
-          it('and require that function expressions have a jsdoc block', () => {
-            expect(Object.keys(rule[1].require)).to.contain('FunctionExpression');
-          });
-
-          it('and require that method definitions have a jsdoc block', () => {
-            expect(Object.keys(rule[1].require)).to.contain('MethodDefinition');
-          });
-
-          it('and do nothing else', () => {
-            expect(rule).to.deep.equal(['error', {
-              contexts: ['ClassProperty'],
-              require: {
-                ArrowFunctionExpression: true,
-                ClassDeclaration: true,
-                ClassExpression: true,
-                FunctionDeclaration: true,
-                FunctionExpression: true,
-                MethodDefinition: true,
-              },
-            }]);
           });
         });
       });
