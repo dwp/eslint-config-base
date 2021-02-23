@@ -53,7 +53,7 @@
     "eslint-plugin-jsdoc": "31.6.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "11.0.0",
+    "@commitlint/cli": "12.0.0",
     "@dwp/commitlint-config-base": "1.1.0",
     "@dwp/eslint-config-mocha": "1.1.0",
     "@dwp/nyc-config-base": "1.0.0",
