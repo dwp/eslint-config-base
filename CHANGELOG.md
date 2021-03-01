@@ -1,3 +1,14 @@
+# [5.0.0](https://github.com/dwp/eslint-config-base/compare/v4.1.0...v5.0.0) (2021-03-01)
+
+
+### Features
+
+* third party ruleset updates
+* add jsdoc plugin and ruleset
+* dependency package updates
+
+
+
 # [4.1.0](https://github.com/dwp/eslint-config-base/compare/v4.0.0...v4.1.0) (2019-09-23)
 
 
