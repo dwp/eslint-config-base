@@ -15,7 +15,7 @@ module.exports = {
     indent: ['error', 2, { SwitchCase: 1 }],
     'no-plusplus': 'off',
     semi: ['error', 'always', { omitLastInOneLineBlock: false }],
-
+    'jsdoc/require-jsdoc': ['off'],
     'jsdoc/check-tag-names': ['error'],
     'jsdoc/require-description': ['error'],
     'jsdoc/require-description-complete-sentence': ['error'],

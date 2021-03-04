@@ -141,6 +141,10 @@ describe('@dwp/eslint-config-base', () => {
       });
 
       describe('jsdoc-specific rules should', () => {
+        it('specify whether we require jsdoc comments', () => {
+          expect(Object.keys(rules)).to.contain('jsdoc/require-jsdoc');
+        });
+
         it('check tag names are valid', () => {
           expect(Object.keys(rules)).to.contain('jsdoc/check-tag-names');
         });
@@ -192,13 +196,23 @@ describe('@dwp/eslint-config-base', () => {
 
       it('should not have any other keys', () => {
         expect(Object.keys(rules)).to.deep.equal([
-          'brace-style', 'curly', 'indent', 'no-plusplus', 'semi',
-          'jsdoc/check-tag-names', 'jsdoc/require-description',
+          'brace-style',
+          'curly',
+          'indent',
+          'no-plusplus',
+          'semi',
+          'jsdoc/require-jsdoc',
+          'jsdoc/check-tag-names',
+          'jsdoc/require-description',
           'jsdoc/require-description-complete-sentence',
-          'jsdoc/require-param', 'jsdoc/require-param-description',
-          'jsdoc/require-param-name', 'jsdoc/require-param-type',
-          'jsdoc/require-returns', 'jsdoc/require-returns-check',
-          'jsdoc/require-returns-description', 'jsdoc/require-returns-type',
+          'jsdoc/require-param',
+          'jsdoc/require-param-description',
+          'jsdoc/require-param-name',
+          'jsdoc/require-param-type',
+          'jsdoc/require-returns',
+          'jsdoc/require-returns-check',
+          'jsdoc/require-returns-description',
+          'jsdoc/require-returns-type',
           'jsdoc/require-throws',
         ]);
       });
@@ -288,6 +302,18 @@ describe('@dwp/eslint-config-base', () => {
       });
 
       describe('the jsdoc ruleset, containing', () => {
+        describe('the require-jsdoc key should', () => {
+          const rule = rules['jsdoc/require-jsdoc'];
+
+          it('disable the requirement', () => {
+            expect(rule[0]).to.equal('off');
+          });
+
+          it('and do nothing else', () => {
+            expect(rule).to.deep.equal(['off']);
+          });
+        });
+
         describe('the check-tag-names key should', () => {
           const rule = rules['jsdoc/check-tag-names'];
 
