@@ -1,3 +1,12 @@
+# [5.0.1](https://github.com/dwp/eslint-config-base/compare/v5.0.0...v5.0.1) (2021-03-05)
+
+
+### Fixes
+
+* disable `jsdoc/require-jsdoc` rule
+
+
+
 # [5.0.0](https://github.com/dwp/eslint-config-base/compare/v4.1.0...v5.0.0) (2021-03-01)
 
 
