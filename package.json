@@ -37,7 +37,9 @@
   "scripts": {
     "compliance-tests": "npm run compliance:commits && npm run compliance:lint",
     "compliance:commits": "commitlint --from=main --to=HEAD",
+    "compliance:commits:edit": "commitlint --edit",
     "compliance:lint": "eslint --ignore-path .gitignore .",
+    "lint-staged": "lint-staged",
     "pipeline": "npm run compliance-tests && npm run security-tests && npm run tests",
     "security-tests": "npm run security:outdated && npm run security:audit",
     "security:audit": "npm audit || true",
@@ -45,7 +47,8 @@
     "security:snyk": "snyk test -dev",
     "test": "npm run pipeline",
     "tests": "npm run tests:unit",
-    "tests:unit": "nyc --report-dir .coverage/unit mocha \"tests/unit/**/*.spec.js\""
+    "tests:unit": "nyc --report-dir .coverage/unit mocha \"tests/unit/**/*.spec.js\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "eslint-config-airbnb-base": "14.2.1",
@@ -59,7 +62,7 @@
     "@dwp/nyc-config-base": "1.0.0",
     "chai": "4.3.4",
     "eslint": "7.24.0",
-    "husky": "4.3.8",
+    "husky": "^6.0.0",
     "lint-staged": "10.5.4",
     "mocha": "8.3.2",
     "nyc": "15.1.0",
