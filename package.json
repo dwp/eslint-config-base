@@ -52,20 +52,20 @@
   },
   "dependencies": {
     "eslint-config-airbnb-base": "14.2.1",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-jsdoc": "32.3.0"
+    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-jsdoc": "35.4.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "12.1.1",
+    "@commitlint/cli": "12.1.4",
     "@dwp/commitlint-config-base": "1.2.0",
     "@dwp/eslint-config-mocha": "1.2.1",
     "@dwp/nyc-config-base": "1.0.0",
     "chai": "4.3.4",
-    "eslint": "7.24.0",
-    "husky": "^6.0.0",
-    "lint-staged": "10.5.4",
-    "mocha": "8.3.2",
+    "eslint": "7.30.0",
+    "husky": "7.0.0",
+    "lint-staged": "11.0.0",
+    "mocha": "9.0.2",
     "nyc": "15.1.0",
-    "snyk": "1.563.0"
+    "snyk": "1.653.0"
   }
 }
