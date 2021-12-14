@@ -214,6 +214,7 @@ describe('@dwp/eslint-config-base', () => {
           'jsdoc/require-returns-description',
           'jsdoc/require-returns-type',
           'jsdoc/require-throws',
+          'no-restricted-syntax',
         ]);
       });
 
@@ -460,6 +461,53 @@ describe('@dwp/eslint-config-base', () => {
           it('and do nothing else', () => {
             expect(rule).to.deep.equal(['error']);
           });
+        });
+      });
+
+      describe('the no-restricted-syntax key should', () => {
+        const rule = rules['no-restricted-syntax'];
+
+        it('raise an error', () => {
+          expect(rule[0]).to.equal('error');
+        });
+
+        it('when for..in statements are used', () => {
+          expect(rule[1]).to.deep.equal({
+            selector: 'ForInStatement',
+            message: 'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.',
+          });
+        });
+
+        it('and when labeled statements are used', () => {
+          expect(rule[2]).to.deep.equal({
+            selector: 'LabeledStatement',
+            message: 'Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.',
+          });
+        });
+
+        it('and when with statements are used', () => {
+          expect(rule[3]).to.deep.equal({
+            selector: 'WithStatement',
+            message: '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
+          });
+        });
+
+        it('and not do anything else', () => {
+          expect(rule).to.deep.equal([
+            'error',
+            {
+              selector: 'ForInStatement',
+              message: 'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.',
+            },
+            {
+              selector: 'LabeledStatement',
+              message: 'Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.',
+            },
+            {
+              selector: 'WithStatement',
+              message: '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
+            },
+          ]);
         });
       });
     });
