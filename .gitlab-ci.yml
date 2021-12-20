@@ -3,7 +3,7 @@
     - docker
 
 .node-image: &node-image
-  image: node:12.22.1-alpine@sha256:d714e8b527d784cd12b3dfc022f771c7f3531acb57f483be2c8f0997924a37df
+  image: node:gallium-alpine@sha256:a9b9cb880fa429b0bea899cd3b1bc081ab7277cc97e6d2dcd84bd9753b2027e1
 
 .install-git: &install-git
   before_script:
