@@ -1,3 +1,24 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [6.0.0](https://github.com/dwp/eslint-config-base/compare/v5.0.1...v6.0.0) (2022-01-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* a change to eslint-plugin-import reports use of the
+`.js` extension on imports as an error now
+
+Signed-off-by: Mike Shaw <mike.shaw@engineering.digital.dwp.gov.uk>
+
+### Features
+
+* update node version to latest lts ([9a3b9eb](https://github.com/dwp/eslint-config-base/commit/9a3b9ebb75519ba5e7d92935d5a8f7c4d91b6e07))
+
+
+* update dependencies ([1075c2a](https://github.com/dwp/eslint-config-base/commit/1075c2a63f7703005531b7f7a81e1f03bc7339d4))
+
 # [5.0.1](https://github.com/dwp/eslint-config-base/compare/v5.0.0...v5.0.1) (2021-03-05)
 
 
